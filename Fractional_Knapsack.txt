@@ -1,16 +1,15 @@
 import java.util.Scanner;
 
 public class Knapsack {
-
     private static void Fractional_Knapsack(int capacity, String[] list, int[] value, int[] weight){
-        double total_value = 0;             //가방 속 물건의 가치
-        double total_weight = 0;            //가방 무게
-        double perValue[] = new double[value.length];
-        int priority[] = new int[value.length];
-        String L[] = new String[value.length];      //가방 속 물건 이름
+        double total_value = 0;                             //가방 속 물건의 가치
+        double total_weight = 0;                            //가방 무게
+        double perValue[] = new double[value.length];       //단위 무게 당 가치(value/weight)
+        int priority[] = new int[value.length];             //인덱스
+        String L[] = new String[value.length];              //가방 속 물건 이름
         int x = 0;
 
-        for(int i = 0; i < perValue.length; i++){      //단위 무게 당 가치(value/weight)를 perValue 배열에 저장
+        for(int i = 0; i < perValue.length; i++){           //단위 무게 당 가치를 perValue 배열에 저장
             perValue[i] = (double)value[i]/(double)weight[i];
             priority[i] = i;
         }
@@ -20,7 +19,7 @@ public class Knapsack {
 
         for(int i = 0; i < perValue.length; i++)
             for(int j = 0; j < perValue.length; j++)        //perValue 값이 큰 순으로 정렬(내림차순)
-                if(perValue[i] < perValue[j]){
+                if(perValue[i] > perValue[j]){
                     temp1 = perValue[i];
                     perValue[i] = perValue[j];
                     perValue[j] = temp1;
@@ -28,28 +27,26 @@ public class Knapsack {
                     temp2 = priority[i];
                     priority[i] = priority[j];
                     priority[j] = temp2;
-                }               //기존 값의 인덱스를 유지하기 위해 priority 배열도 같이 정렬
+                }                                           //기존 값의 인덱스를 유지하기 위해 priority 배열도 같이 정렬
 
-        while(total_weight + weight[x] <= capacity){
+        while(total_weight + weight[priority[x]] <= capacity){
             L[x] = list[priority[x]];
             total_weight = total_weight + weight[priority[x]];
             total_value = total_value + value[priority[x]];
-            x++;
+            x++;                                            //x를 S에서 제거
         }
 
-        if(capacity - total_weight > 0){
+        if(capacity - total_weight > 0){                    // 배낭에 물건을 부분적으로 담을 여유가 있으면 
             L[x] = list[priority[x]];
             total_value = total_value + perValue[x] * (capacity - total_weight);
             x++;
-        }                       //우선순위의 숫자가 큰 것이 먼저 실행되도록 설정
-
+        }                                                   //우선순위의 숫자가 큰 것이 먼저 실행되도록 설정
 
         System.out.println("배낭에 담은 물건 리스트는 ");
         for(int i = 0; i < x; i++)
             System.out.println(L[i]);
 
         System.out.println("이고, 물건 가치의 합은 " + total_value + "이다.");
-
     }
 
     public static void main(String[] args){
