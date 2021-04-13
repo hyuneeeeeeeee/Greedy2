@@ -1,0 +1,67 @@
+# 그리디 알고리즘
+
+#### 부분 배낭 문제
+
+문제 출처 : https://www.acmicpc.net/problem/12865
+
+참조 코드 :  https://st-lab.tistory.com/141
+
+```
+import java.util.Scanner;
+import java.io.IOException;
+
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("물품의 수를 입력해주세요.");
+        int N = sc.nextInt();
+        System.out.println("버틸 수 있는 무게를 입력해주세요.");
+        int K = sc.nextInt();
+
+        int[] W = new int[N + 1]; // 무게
+        int[] V = new int[N + 1]; // 가치
+        int[][] dp = new int[N + 1][K + 1];
+
+        System.out.println("물품의 무게와 그 가중치를 입력해주세요.");
+        for (int i = 0; i < N; i++) {
+
+            W[i] = sc.nextInt();
+            V[i] = sc.nextInt();
+        }
+
+        for (int i = 1; i <= N; i++) {
+            for (int j = 1; j <= K; j++) {
+
+                // i번째 무게를 더 담을 수 없는 경우
+                if(W[i] > j) {
+
+                    dp[i][j] = dp[i - 1][j];
+
+                }
+                // i번째 무게를 더 담을 수 있는 경우
+                else {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - W[i]] + V[i]);
+                }
+
+            }
+        }
+        System.out.println(dp[N][K]);
+        
+    }
+
+}
+```
+
+![1](https://user-images.githubusercontent.com/80919306/114570960-3c50ba00-9cb1-11eb-9090-8ee2766de844.jpg)
+
+
+
+![2](https://user-images.githubusercontent.com/80919306/114571113-5c807900-9cb1-11eb-8871-7f6e6da15d81.jpg)
+
+![3](https://user-images.githubusercontent.com/80919306/114571142-63a78700-9cb1-11eb-96ac-f00482ff7173.jpg)
+
+![4](https://user-images.githubusercontent.com/80919306/114571181-6dc98580-9cb1-11eb-85ab-b1965d1602ef.jpg)
+
