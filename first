@@ -1,0 +1,21 @@
+import java.util.*;
+
+public class Main{
+    static int n, c;
+    static int w[] = new int[n+1];
+    static int v[] = new int[n+1];
+    static int s[] = new int[n+1];
+
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+       n = sc.nextInt();
+       c = sc.nextInt();
+
+       for(int i = 1;i <=n; i++){
+           w[i] = sc.nextInt();
+           v[i] = sc.nextInt();
+           s[i] = v[i]/w[i];
+       }
+       
+    }
+}
