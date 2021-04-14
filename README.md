@@ -11,7 +11,7 @@
 
 ![image](https://user-images.githubusercontent.com/80511341/114664600-e58dc380-9d36-11eb-8cce-92cd2ebd8a51.png)
 
-● 다음 그림과 같은 4개의 금속 분말이 있고 배낭의 최대 용량은 40g이다.
+다음 그림과 같은 4개의 금속 분말이 있고, 배낭의 최대 용량은 40g이다.
 
 ------
 
