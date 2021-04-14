@@ -101,7 +101,7 @@ while(total_weight + weight[priority[x]] <= capacity){
 
 
 
-##### 전체 코드
+### 전체 코드
 
 ```java
 import java.util.Scanner;
@@ -174,8 +174,6 @@ public class Main {
     }
 }
 ```
-
-
 
 **코드 실행 결과**
 
