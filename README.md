@@ -197,4 +197,4 @@ STEP 1에서 단위 무게 당 가치를 계산하는 데 걸리는 시간은 O(
 
 **시간 복잡도 그래프**
 
-<img width="723" alt="그랳프" src="https://user-images.githubusercontent.com/80919306/114660971-27b40680-9d31-11eb-8b0d-bb3851ba3b58.PNG">
+<img width="723" alt="그래프" src="https://user-images.githubusercontent.com/80919306/114660971-27b40680-9d31-11eb-8b0d-bb3851ba3b58.PNG">
